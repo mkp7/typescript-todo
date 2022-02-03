@@ -1,0 +1,19 @@
+{
+  "name": "typescript-todo",
+  "version": "0.1.0",
+  "description": "To-Do App in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkp7/typescript-todo.git"
+  },
+  "author": "Mehulkumar Parmar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkp7/typescript-todo/issues"
+  },
+  "homepage": "https://github.com/mkp7/typescript-todo#readme"
+}
