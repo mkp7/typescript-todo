@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { getAll } from "./todoAPI";
 
 export interface TodoListState {
   id: string;
@@ -11,6 +12,14 @@ export interface TodoListsState {
 }
 
 const initialState: TodoListsState = {};
+
+export const fetchTodos = createAsyncThunk<TodoListsState>(
+  "todos/getAll",
+  async () => {
+    const response = await getAll();
+    return response.data;
+  }
+);
 
 export const todoListsSlice = createSlice({
   name: "todo-lists",
@@ -31,6 +40,11 @@ export const todoListsSlice = createSlice({
       const list = state[id];
       list.items.push(itemId);
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchTodos.fulfilled, (state, action) => {
+      console.log(action.payload);
+    });
   },
 });
 

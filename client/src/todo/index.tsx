@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 } from "uuid";
 import TodoList from "./TodoList";
-import { addTodoList } from "./todoListsSlice";
+import { fetchTodos, addTodoList } from "./todoListsSlice";
 import { RootState } from "../store";
 
 export default function TodoApp() {
@@ -10,6 +10,10 @@ export default function TodoApp() {
   const dispatch = useDispatch();
   const [todoListName, setTodoListName] = useState("");
   const [selectedTodoList, setSelectedTodoList] = useState<string | null>(null);
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
   function createTodoList(name: string) {
     const id = v4();
